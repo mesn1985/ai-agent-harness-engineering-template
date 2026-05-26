@@ -1,0 +1,85 @@
+# Machine-readable harness configuration.
+# Adapt commands, hooks, and policies to your stack.
+
+project:
+  name: "harness-engineering-project-template"
+  risk_default: "medium"
+  agent_entrypoint: "AGENTS.md"
+
+feedforward:
+  project_spec: "harness/feedforward.md"
+  task_template: "tasks/task-template.md"
+
+permissions:
+  agent_may:
+    - "read_project_files"
+    - "edit_task_related_source"
+    - "edit_task_related_tests"
+    - "run_local_checks"
+    - "update_task_related_docs"
+  agent_must_not:
+    - "deploy_to_production_without_approval"
+    - "change_auth_without_approval"
+    - "change_billing_without_approval"
+    - "delete_data_without_approval"
+    - "introduce_major_dependency_without_approval"
+
+computational_sensors:
+  unit_tests:
+    required: true
+    command: "./scripts/run-computational-sensors.sh unit"
+    pass_condition: "all relevant unit tests pass"
+    failure_response: "inspect failure, fix task-related issue, rerun"
+
+  integration_tests:
+    required: false
+    command: "./scripts/run-computational-sensors.sh integration"
+    pass_condition: "all relevant integration tests pass"
+    failure_response: "inspect boundary failure, fix or escalate"
+
+  lint:
+    required: false
+    command: "./scripts/run-computational-sensors.sh lint"
+    pass_condition: "no lint errors"
+    failure_response: "fix local lint errors or explain"
+
+  typecheck:
+    required: false
+    command: "./scripts/run-computational-sensors.sh typecheck"
+    pass_condition: "no type errors"
+    failure_response: "fix local type errors or escalate"
+
+  build:
+    required: false
+    command: "./scripts/run-computational-sensors.sh build"
+    pass_condition: "build succeeds"
+    failure_response: "fix or escalate"
+
+inferential_sensors:
+  requirement_alignment:
+    required: true
+    question: "Does the solution satisfy the stated intent and acceptance criteria?"
+
+  architecture_fit:
+    required: true
+    question: "Does the solution fit the existing architecture and conventions?"
+
+  test_quality:
+    required: true
+    question: "Do the tests cover meaningful behavior and important edge cases?"
+
+  risk_assessment:
+    required: true
+    question: "Could this change break security, data integrity, public APIs, or production behavior?"
+
+correction_policy:
+  max_self_correction_attempts_per_failure: 2
+  allow_local_test_fix: true
+  allow_lint_fix: true
+  allow_type_fix: true
+  escalate_on_ambiguity: true
+  escalate_on_architecture_change: true
+  escalate_on_security_or_data_risk: true
+
+final_report:
+  contract: "harness/final-response-contract.md"
