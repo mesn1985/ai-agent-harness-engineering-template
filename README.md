@@ -35,10 +35,19 @@ The agent should not work from a prompt alone. It should work inside a harness t
 
 ## Project Structure
 
+Current repository contents:
+
 ```text
 .
+├── .github/
+│   └── workflows/
+│       └── harness-checks.yml
 ├── AGENTS.md
 ├── README.md
+├── docs/
+│   └── README.md
+├── evaluation/
+│   └── rubric.md
 ├── harness/
 │   ├── feedforward.md
 │   ├── harness.yaml
@@ -47,17 +56,18 @@ The agent should not work from a prompt alone. It should work inside a harness t
 │   ├── final-response-contract.md
 │   ├── sensors/
 │   └── hooks/
-├── tasks/
-│   ├── task-template.md
-│   └── examples/
 ├── scripts/
 │   ├── agent-preflight.sh
 │   ├── run-computational-sensors.sh
 │   └── agent-final-check.sh
-├── evaluation/
-├── docs/
 ├── src/
+│   └── README.md
+├── tasks/
+│   ├── task-template.md
+│   └── examples/
+│       └── example-bugfix-task.md
 └── tests/
+	└── README.md
 ```
 
 ---
@@ -72,8 +82,9 @@ The agent should not work from a prompt alone. It should work inside a harness t
 | `harness/correction-policy.md` | Defines fix, retry, escalation, and stop rules |
 | `harness/risk-controls.md` | Defines autonomy limits by risk level |
 | `harness/final-response-contract.md` | Defines what the agent must report when done |
+| `.github/workflows/harness-checks.yml` | Placeholder CI workflow for harness checks |
 | `tasks/task-template.md` | Template for task-specific feedforward |
-| `scripts/run-computational-sensors.sh` | Placeholder for running tests, lint, build, and other checks |
+| `scripts/run-computational-sensors.sh` | Placeholder command entrypoint for tests, lint, typecheck, and build |
 | `evaluation/rubric.md` | Rubric for evaluating agent output and harness quality |
 
 ---
@@ -84,8 +95,9 @@ The agent should not work from a prompt alone. It should work inside a harness t
 2. Fill out `harness/feedforward.md` with project-specific product and engineering guidance.
 3. Configure `harness/harness.yaml` with real commands for your stack.
 4. Create a task file from `tasks/task-template.md`.
-5. Point the AI agent to `AGENTS.md`.
-6. Require the agent to run the relevant sensors and follow the final response contract.
+5. Customize `scripts/run-computational-sensors.sh` with your stack commands.
+6. Point the AI agent to `AGENTS.md`.
+7. Require the agent to run the relevant sensors and follow the final response contract.
 
 ---
 
