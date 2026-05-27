@@ -39,9 +39,6 @@ Current repository contents:
 
 ```text
 .
-├── .github/
-│   └── workflows/
-│       └── harness-checks.yml
 ├── AGENTS.md
 ├── README.md
 ├── docs/
@@ -49,6 +46,7 @@ Current repository contents:
 ├── evaluation/
 │   └── rubric.md
 ├── harness/
+│   ├── ai-agent-feedforward-template.md
 │   ├── feedforward.md
 │   ├── harness.yaml
 │   ├── correction-policy.md
@@ -78,11 +76,11 @@ Current repository contents:
 |---|---|
 | `AGENTS.md` | Main entrypoint for AI agents |
 | `harness/feedforward.md` | Defines what to build, how to build it, and how to verify it |
+| `harness/ai-agent-feedforward-template.md` | Optional AI-agent feedforward prompt template |
 | `harness/harness.yaml` | Machine-readable harness configuration |
 | `harness/correction-policy.md` | Defines fix, retry, escalation, and stop rules |
 | `harness/risk-controls.md` | Defines autonomy limits by risk level |
 | `harness/final-response-contract.md` | Defines what the agent must report when done |
-| `.github/workflows/harness-checks.yml` | Placeholder CI workflow for harness checks |
 | `tasks/task-template.md` | Template for task-specific feedforward |
 | `scripts/run-computational-sensors.sh` | Placeholder command entrypoint for tests, lint, typecheck, and build |
 | `evaluation/rubric.md` | Rubric for evaluating agent output and harness quality |

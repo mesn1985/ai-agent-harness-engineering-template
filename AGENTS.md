@@ -162,7 +162,6 @@ Common hooks:
 scripts/agent-preflight.sh
 scripts/run-computational-sensors.sh
 scripts/agent-final-check.sh
-.github/workflows/harness-checks.yml
 ```
 
 Hook documentation is located in:

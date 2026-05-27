@@ -120,7 +120,6 @@ Default hooks:
 ```text
 - Preflight hook
 - Test runner hook
-- CI hook
 - Log hook, if runtime behavior is involved
 - Review hook
 ```

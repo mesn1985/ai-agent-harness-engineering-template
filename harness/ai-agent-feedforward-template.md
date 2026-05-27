@@ -239,7 +239,6 @@ Define how the agent accesses tools, checks, logs, workflows, and approval gates
 |---|---|---|---|---|
 | Pre-commit hook | Local validation | `<command>` | Allowed | Run before final output |
 | Test runner hook | Execute tests | `<command>` | Allowed | Use relevant test subset first |
-| CI hook | Clean environment validation | `<workflow name>` | Read / trigger / not allowed | Final gate |
 | Log hook | Inspect runtime logs | `<tool/query>` | Read-only | Do not expose secrets |
 | Metrics hook | Inspect service health | `<dashboard/query>` | Read-only | Use for performance/runtime tasks |
 | Trace hook | Inspect request flow | `<tool/query>` | Read-only | Use for distributed failures |
@@ -430,7 +429,6 @@ Use this when the task is small.
 
 ## Hooks
 - Test runner: <command>
-- CI: <workflow>
 - Logs: <query/tool if relevant>
 
 ## Correction Rules
@@ -480,7 +478,6 @@ Implement password reset using a time-limited email link.
 
 ## Hooks
 - Test runner: local test command
-- CI: authentication workflow
 - Logs: inspect authentication errors if integration tests fail
 - Review: human review required before merge
 
