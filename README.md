@@ -143,4 +143,4 @@ Both are needed. Computational sensors catch objective failures. Inferential sen
 
 ## Status
 
-This is a starter template. Adapt it to your language, framework, CI system, observability tools, and team conventions.
+This is a starter template. Adapt it to your language, framework, CI system, observability tools, and team conventions. And LLM Resources such as context window
